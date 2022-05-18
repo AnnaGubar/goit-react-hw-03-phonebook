@@ -1,0 +1,39 @@
+.list {
+  padding: 0;
+  list-style: none;
+}
+
+.contact {
+  width: 400px;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid rgba(162, 155, 155, 0.203);
+  border-radius: 5px;
+  align-items: center;
+  margin-bottom: 5px;
+  padding: 5px;
+  transition: all 400ms ease-in-out;
+}
+
+p {
+  margin: 5px 0;
+  font-weight: 500;
+}
+
+.contact:hover,
+.contact:focus {
+  border: 2px solid rgba(162, 155, 155, 0.203);
+  background-color: rgba(162, 155, 155, 0.203);
+}
+
+.delete {
+  margin-left: 120px;
+  border-radius: 5px;
+  border-color: transparent;
+  transition: all 400ms ease-in-out;
+}
+
+.contact:hover .delete,
+.contact:focus .delete {
+  background-color: #e09898;
+}
