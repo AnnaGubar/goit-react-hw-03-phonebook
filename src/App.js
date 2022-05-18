@@ -8,14 +8,14 @@ import ContactList from './Components/ContactList';
 class App extends Component {
   state = {
     filter: '',
-    // contacts: [],
+    contacts: [],
 
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    // contacts: [
+    //   { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+    //   { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+    //   { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+    //   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    // ],
   };
 
   // ContactForm
@@ -31,6 +31,30 @@ class App extends Component {
 
     this.handleUniqueListContacts(contact);
   };
+
+  componentDidMount() {
+    // console.log('App componentDidMount');
+
+    const savedContacts = JSON.parse(localStorage.getItem('contacts'));
+
+    if (savedContacts) {
+      // console.log('В хранилище есть сохранения, показываю');
+      this.setState({ contacts: savedContacts });
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // console.log('App componentDidUpdate');
+
+    const { contacts } = this.state;
+
+    if (contacts !== prevState.contacts) {
+      // console.log('Обновилось поле contacts, записываю в хранилище');
+      localStorage.setItem('contacts', JSON.stringify(contacts));
+    }
+
+    return;
+  }
 
   handleSearch = e => {
     this.setState({ filter: e.currentTarget.value });
