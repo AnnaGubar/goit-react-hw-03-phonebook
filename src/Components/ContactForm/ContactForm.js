@@ -8,6 +8,10 @@ class ContactForm extends Component {
     number: '',
   };
 
+  static propTypes = {
+    updateAppContacts: propTypes.func.isRequired,
+  };
+
   // отслеживает инпуты формы
   handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -63,8 +67,8 @@ class ContactForm extends Component {
   }
 }
 
-ContactForm.propTypes = {
-  updateAppContacts: propTypes.func.isRequired,
-};
+// ContactForm.propTypes = {
+//   updateAppContacts: propTypes.func.isRequired,
+// };
 
 export default ContactForm;
